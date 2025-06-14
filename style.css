@@ -1,0 +1,273 @@
+body {
+    font-family: "Gowun Dodum", sans-serif;
+    margin: 0;  /* 화면 끝에 딱 붙이기 위함 */
+    height: 100%;
+    user-select: none;  /* UX 불편함 방지: 드래그 방지 */
+}
+
+/* 로그인 페이지 */
+#login-page {
+    display: flex;
+    height: 100vh;
+}
+.login-left {
+    flex: 1;
+    flex-direction: column; /* .logo와 .quote-gallery가 수직으로 배치되도록 */
+    background: linear-gradient(0deg,rgba(168, 209, 231, 1) 0%, rgba(252, 250, 242, 1) 100%);
+    padding: 20px;
+    position: relative; /* .logo의 절대 위치 기준 설정 */
+}
+.logo {
+    font-family: "Amaranth", sans-serif;
+    color: #33539E;
+    position: absolute;
+    margin: 0;
+}
+.quote-gallery {
+    font-size: 1.5em;
+    flex: 1;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #33539E;
+}
+.login-right {
+    flex: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #FCFAF2;
+}
+.login-container {
+    width: 300px;
+}
+.login-container h2 {
+    font-family: "Amaranth", sans-serif;
+    color: #33539E;
+    text-align: center;
+}
+.login-form input {
+    font-family: "Gowun Dodum", sans-serif;
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+}
+.checkbox {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+    width: 100%;
+    font-size: 14px;
+}
+#please-check {
+    width: 40px;
+}
+.agree {
+    text-align: center;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+.agree a:visited {
+    color: #33539E;
+}
+.agree a:hover {
+    color: #DA2864;
+}
+.agree a:visited {
+    text-decoration: none;
+}
+#login-btn {
+    display: flex;
+    justify-content: center;
+}
+#login-btn button {
+    padding: 8px 17px;
+    border-radius: 20px;
+    cursor: pointer;
+    color: white;
+    font-size: 14px;
+    background-color: #33539E;
+    transition: transform 0.1s ease;
+}
+
+/* 2. 투두 페이지 */
+#todo-page {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+.todo-left, .idea-right {
+    flex: 1;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #FCFAF2;
+    height: 100vh;
+    overflow-y: auto;
+}
+.content-area {
+    display: flex;
+    flex: 1;
+}
+/* 2-1. 명언 */
+.quote-container {
+    color: #33539E;
+    width: 100%;
+    background: linear-gradient(0deg,rgba(168, 209, 231, 1) 0%, rgba(252, 250, 242, 1) 100%);
+    position: relative;
+}
+.quote-banner {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* #prev-btn과 #next-btn이 양쪽 끝에 위치하도록 */
+    text-align: center;
+}
+#close-btn {
+    position: absolute;
+    padding: 0;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+    font-size: 11px;
+}
+#prev-btn, #next-btn {
+    color: #33539E;
+}
+/* 2-2. 투두리스트 */
+.date {
+    font-weight: bold;
+    font-size: 1.2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+#todo-container {
+    padding: 10px;
+    height: 400px;
+}
+.todo-div {
+    margin: 7px 0;
+    flex-wrap: wrap;
+    background-color: #bfe0f4;
+    border-radius: 10px;
+}
+.todo-div div {
+    margin: 10px;
+    display: flex;
+    align-items: center;
+}
+#todo-container button:not(.add-task-btn, .add-category-btn) {
+    background-color: #e6e6e6;
+    border-radius: 5px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+.add-task-btn {
+    color: white;
+    background-color: #A5678E;
+    border-radius: 5px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+.add-category-btn {
+    color: white;
+    background-color: #33539E;
+    border-radius: 5px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+#todo-container label {
+    word-break: break-all;
+    margin: 0 5px 0 5px;
+}
+#todo-container h3 {
+    word-break: break-all;
+    margin: 0;
+    padding: 6px;
+}
+#todo-container ul {
+    margin: 0 10px 0 10px;
+    padding: 5px;
+}
+#todo-container li {
+    list-style-type: none;
+    margin-bottom: 8px;
+}
+#todo-container label.completed {
+    text-decoration: line-through;
+    color: #828282;
+}
+/* 2-3. 크리스탈 */
+#idea-container {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    text-align: center;
+}
+#idea-container h2 {
+    font-family: "Amaranth", sans-serif;
+    margin-bottom: 16px;
+}
+.select-crystal-btn {
+    background-color: #f8e9a6;
+    height: 2.5em;
+    border-radius: 20px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+.crystal-tank {
+    position: relative;
+    margin: 0;
+    border-radius: 10px;
+    margin: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:flex-start;
+    overflow-y: auto;
+    gap: 3px;
+}
+.crystal-bubble {
+    position: relative;
+    width: 3em;
+    height: 3em;
+    background-size: cover;
+}
+
+/* 애니메이션: 로그인 버튼 클릭 시 적용됨 */
+.pulse {
+    animation: pulseAnimation 0.4s ease-in-out 1;
+}
+@keyframes pulseAnimation {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); } /* 살짝 커지게 */
+    100% { transform: scale(1); }
+}
+
+/* 애니메이션: 화면 전환, 다음 명언으로의 전환에 적용됨 */
+.fade-out {
+    animation: fadeOut 0.5s ease-out forwards;
+}
+.fade-in {
+    animation: fadeIn 0.5s ease-in forwards;
+    display: flex;
+}
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; display: none; }
+}
+@keyframes fadeIn {
+    from { opacity: 0; display: none; }
+    to { opacity: 1; display: block; }
+}
+
+/* 모든 버튼에 기본 적용할 스타일 */
+button {
+    font-family: "Gowun Dodum", sans-serif;
+    background: none;
+    border: none;
+}

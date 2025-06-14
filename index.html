@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motimoa</title>
+
+    <!-- CSS 파일 연결 -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- 사용할 폰트 -->
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amaranth:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- ⭐ 로그인 페이지 ⭐ -->
+    <div id="login-page">
+
+        <!-- 왼쪽: 명언 -->
+        <div class="login-left">
+            <h2 class="logo">Motimoa</h2>
+            <div class="quote-gallery">
+                <div id="quote-1"><!-- 명언 배열 --></div>
+            </div> 
+            <!-- js: 이벤트 (3초마다 명언 배열의 다음 인덱스로 넘어감) -->
+            <!-- 애니메이션: 자연스럽게 변화 -->
+        </div>
+        
+        <!-- 오른쪽: 로그인 -->
+        <div class="login-right">
+            <div class="login-container">
+                <h2>Welcome! 👋🏻</h2>
+                <form class="login-form">
+                    <input id="write-name" type="text" placeholder="이름">
+                    <input id="write-email" type="email" placeholder="이메일">
+                    <input id="write-password" type="password" placeholder="비밀번호">
+                    <div class="checkbox">
+                        <input id="please-check" type="checkbox">
+                        <label>(필수) 개인정보 수집·이용 동의</label>
+                    </div>
+                    <div class="agree">
+                        <a href="/Todo/pi-agree.html">개인정보 수집·이용 동의서</a>
+                    </div>
+                    <div id="login-btn">
+                        <button>로그인</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- ⭐ 투두 리스트 페이지 ⭐ -->
+    <div id="todo-page" style="display: none;">
+        <!-- 위쪽: 명언 -->
+        <div class="quote-container">
+            <div class="quote-banner">
+                <button id="prev-btn">◀</button>  <!-- js: 버튼 클릭 이벤트 (명언 배열의 다음 인덱스로 넘어감) -->
+                <div id="quote-2"><!-- 명언 배열 --></div>
+                <button id="next-btn">▶</button>  <!-- js: 버튼 클릭 이벤트 (명언 배열의 다음 인덱스로 넘어감) -->
+            </div>
+                <button id="close-btn">X</button>   <!-- js: 버튼 클릭 이벤트 (배너가 사라짐) -->
+        </div>
+        <!-- 왼쪽: 투두리스트 -->
+        <div class="content-area">
+            <div class="todo-left">
+                <div class="date">
+                    <button id="yesterday-btn">◀</button>
+                    <div id="calendar"></div>
+                    <button id="tomorrow-btn">▶</button>
+                </div>
+                <div id="todo-container">
+                    <!-- 카테고리 및 그에 따른 할 일 목록에 동적으로 나타나야 함 -->
+                </div>
+            </div>
+            
+            <div class="idea-right">
+                <div id="idea-container">
+                    <!-- 감정 크리스탈 모으기 -->
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<!-- JS 파일 연결 -->
+<script type="module" src="Login.js"></script>
+<script type="module" src="Todo.js"></script>
+<script type="module" src="Quote.js"></script>
+</html>
