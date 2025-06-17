@@ -13,7 +13,7 @@ body {
 .login-left {
     flex: 1;
     flex-direction: column; /* .logo와 .quote-gallery가 수직으로 배치되도록 */
-    background: linear-gradient(0deg,rgba(168, 209, 231, 1) 0%, rgba(252, 250, 242, 1) 100%);
+    background: linear-gradient(0deg,#a8d1e7 0%, #fcfaf2 100%);
     padding: 20px;
     position: relative; /* .logo의 절대 위치 기준 설정 */
 }
@@ -61,9 +61,10 @@ body {
     align-items: center;
     white-space: nowrap;
     width: 100%;
-    font-size: 14px;
+    font-size: 0.9em;
 }
 #please-check {
+    font-size: 0.9em;
     width: 40px;
 }
 .agree {
@@ -126,13 +127,20 @@ body {
     justify-content: space-between; /* #prev-btn과 #next-btn이 양쪽 끝에 위치하도록 */
     text-align: center;
 }
-#close-btn {
+#close-btn, #open-btn {
     position: absolute;
     padding: 0;
     top: 5px;
     right: 5px;
     cursor: pointer;
     font-size: 11px;
+}
+#open-btn {
+    position: absolute;
+    color: #33539E;
+    background-color: #a8d1e7;
+    border-radius: 5px;
+    padding: 1px 6px 1px 6px;
 }
 #prev-btn, #next-btn {
     color: #33539E;
@@ -237,6 +245,38 @@ body {
     height: 3em;
     background-size: cover;
 }
+/* 2-4. 고양이 애니메이션 */
+.cat-animation-wrapper {
+    position: fixed; /* 화면 하단에 고정 */
+    bottom: 0;       /* 화면 아래쪽으로 정렬 */
+    width: 400px;    /* 스프라이트 이미지의 너비 */
+    height: 200px;   /* 스프라이트 이미지 한 프레임의 높이 */
+    
+    /* 애니메이션 속도를 절반으로 (5.5s * 2 = 11s) */
+    /* 고양이가 오른쪽에서 왼쪽으로 이동하도록 키프레임 변경 */
+    animation: move-animation 11s infinite linear;
+    z-index: 99; /* 고양이가 다른 요소 위에 보이도록 */
+}
+.cat-walking-sprite {
+    width: 400px;    /* 스프라이트 이미지의 너비 */
+    height: 200px;   /* 스프라이트 이미지 한 프레임의 높이 */
+    background: url("/Todo/assets/cat_tiles.png") 0 0 no-repeat; /* 스프라이트 이미지 경로 및 초기 위치 */
+    
+    animation: walk-animation 2s steps(12) infinite; 
+}
+.cat-toggle-btn {
+    position: fixed; /* 화면에 고정 */
+    bottom: 10px;    /* 화면 하단에서 10px 위 */
+    left: 10px;      /* 화면 왼쪽에서 10px 오른쪽 */
+    padding: 8px 15px;
+    border-radius: 20px;
+    background-color: #A5678E; /* 기존 버튼 색상 참고 */
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    z-index: 100; /* 고양이 애니메이션보다 위에 보이도록 */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* 은은한 그림자 효과 */
+}
 
 /* 애니메이션: 로그인 버튼 클릭 시 적용됨 */
 .pulse {
@@ -263,6 +303,25 @@ body {
 @keyframes fadeIn {
     from { opacity: 0; display: none; }
     to { opacity: 1; display: block; }
+}
+
+/* 애니메이션: 걷는 애니메이션 키프레임 (세로 스프라이트용) */
+@keyframes walk-animation {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 0 -2391px; /* 스프라이트 이미지의 총 높이 - (마지막 프레임 직전 위치) */
+    }
+}
+/* 고양이가 화면을 가로지르는 애니메이션 키프레임 (오른쪽에서 왼쪽으로 이동) */
+@keyframes move-animation {
+    from {
+        left: calc(100vw + 100px); /* 화면 오른쪽 밖에서 시작 (+100px은 완전히 밖에서 시작하기 위함) */
+    }
+    to {
+        left: -100px; /* 화면 왼쪽 밖으로 이동 (-100px은 완전히 밖으로 나가기 위함) */
+    }
 }
 
 /* 모든 버튼에 기본 적용할 스타일 */

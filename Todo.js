@@ -64,7 +64,7 @@ function showTodo() {
             if (!currentTodos[newCategory]) {
                 currentTodos[newCategory] = []; // 새 카테고리에 빈 목록 추가
             } else {
-                alert('이미 있는 카테고리');
+                alert('⚠️ 이미 존재하는 카테고리입니다.');
                 return;                
             }
             showTodo();
@@ -80,7 +80,7 @@ function showTodo() {
         let categoryBox = document.createElement('div');
         categoryBox.className = 'todo-div';
 
-        // 카테고리 제목, 버튼 포함
+        // 카테고리 제목, 버튼 포함: cateHeader
         let cateHeader = document.createElement('div');
         cateHeader.style.display = 'flex';
         cateHeader.style.alignItems = 'center';
@@ -113,6 +113,7 @@ function showTodo() {
         });
 
         // 할 일 추가 버튼: addTaskBtn
+        // 카테고리명 수정, 카테고리 삭제 버튼 옆에 위치시키기 위해 addTaskBtn 코드를 이곳에 작성함
         let addTaskBtn = document.createElement('button');
         addTaskBtn.className = 'add-task-btn';
         addTaskBtn.textContent = '할 일 ⊕';
@@ -200,6 +201,9 @@ function showTodo() {
 // ➋ 크리스탈 북 (구슬 컬렉션)
 const ideaContainer = document.getElementById('idea-container');
 
+// 마지막으로 크리스탈을 획득한 날짜를 저장할 변수 추가
+let lastCollectedDate = null; 
+
 // 감정 크리스탈 데이터 초기화
 let crystalBook = {
     emotions: {
@@ -224,12 +228,12 @@ function updateCrystals() {
     selectCrysBtn.textContent = '💎 오늘의 감정 💎';
     selectCrysBtn.className = 'select-crystal-btn';
     
-    selectCrysBtn.disabled = !allDone();
+    // 버튼 활성화 조건
+    selectCrysBtn.disabled = !(allDone() && canCollectToday());
     selectCrysBtn.addEventListener('click', selectCrystal);
     ideaContainer.appendChild(selectCrysBtn);
 
     // 크리스탈 수집 목록
-    // 어항 컨테이너
     let crystalTank = document.createElement('div');
     crystalTank.className = 'crystal-tank';
     ideaContainer.appendChild(crystalTank);
@@ -238,7 +242,7 @@ function updateCrystals() {
         let collectedCrystal = document.createElement('div');
         collectedCrystal.className = 'crystal-bubble';
         collectedCrystal.style.backgroundImage = `url(${crystalBook.emotions[emotion].image})`;
-        crystalTank.appendChild(collectedCrystal);  // 시간 순서대로 추가
+        crystalTank.appendChild(collectedCrystal);  // 모은 순서대로 추가
     });
 }
 
@@ -262,6 +266,12 @@ function allDone() {
         return true;    // 모든 조건 만족 시 true
     }
     return Object.keys(currentTodos).length > 0;    // 카테고리가 있어야 함
+}
+
+// 오늘 크리스탈을 모을 수 있는지 확인하는 함수: canCollectToday()
+function canCollectToday() {
+    const today = new Date().toDateString(); // '오늘'의 날짜 문자열 (예: "Tue Jun 17 2025")
+    return lastCollectedDate !== today; // 마지막 수집일과 오늘이 다르면 true 반환 (오늘 아직 수집하지 않음)
 }
 
 // 크리스탈 선택 모달을 띄울 함수: selectCrystal()
@@ -326,6 +336,27 @@ function collectCrystal (emotion) {
     crystalBook.emotions[emotion].collected += 1;
     crystalBook.collectedCount += 1;
     crystalBook.collectionOrder.push(emotion);  // 수집 순서 기록
+    lastCollectedDate = new Date().toDateString();  // 크리스탈을 수집한 날짜를 오늘 날짜로 업데이트
+
     updateCrystals();
     alert(`${emotion} 크리스탈을 획득했습니다! ✨`);
+}
+
+// ⭐ 고양이 애니메이션 토글 기능 추가 ⭐
+const catAnimationWrapper = document.querySelector('.cat-animation-wrapper');
+const toggleCatBtn = document.getElementById('toggle-cat-btn');
+
+if (catAnimationWrapper && toggleCatBtn) {
+    let isCatVisible = true; // 고양이 초기 상태는 보임
+
+    toggleCatBtn.addEventListener('click', () => {
+        if (isCatVisible) {
+            catAnimationWrapper.style.display = 'none'; // 고양이 애니메이션 숨기기
+            toggleCatBtn.textContent = '고양이 보이기'; // 버튼 텍스트 변경
+        } else {
+            catAnimationWrapper.style.display = 'block'; // 고양이 애니메이션 보이기
+            toggleCatBtn.textContent = '고양이 숨기기'; // 버튼 텍스트 변경
+        }
+        isCatVisible = !isCatVisible; // 상태 반전
+    });
 }

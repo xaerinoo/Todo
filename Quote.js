@@ -71,9 +71,19 @@ function flipTodoQuote() {
 
 document.addEventListener('DOMContentLoaded', todoQuoteBtn);
 function todoQuoteBtn() {
+    const quoteContainer = document.querySelector('.quote-container');
+    const quoteBanner = document.querySelector('.quote-banner');
+
     const beforeBtn = document.getElementById('prev-btn');
     const afterBtn = document.getElementById('next-btn');
     const closeBtn = document.getElementById('close-btn');
+
+    // 명언 보기 버튼 추가
+    const openBtn = document.createElement('button');
+    openBtn.textContent = '명언 배너'
+    openBtn.id = 'open-btn';
+    openBtn.style.display = 'none'  // 처음에는 숨김
+    quoteContainer.appendChild(openBtn);
 
     if (todoQuote && beforeBtn && afterBtn && closeBtn) {
         flipTodoQuote();
@@ -88,12 +98,25 @@ function todoQuoteBtn() {
             flipTodoQuote();
         });
 
+        // 명언 배너 닫기 버튼 클릭 이벤트
         closeBtn.addEventListener('click', () => {
-            if (todoQuote.parentElement) {
+            if (quoteBanner) {
+                quoteBanner.style.display = 'none';
                 beforeBtn.style.display = 'none';
                 afterBtn.style.display = 'none';
                 closeBtn.style.display = 'none';
-                todoQuote.parentElement.style.display = 'none';
+                openBtn.style.display = 'block';
+            }
+        });
+
+        // 명언 배너 열기 버튼 클릭 이벤트
+        openBtn.addEventListener('click', () => {
+            if (quoteBanner && beforeBtn && afterBtn && closeBtn) {
+                quoteBanner.style.display = 'flex';
+                beforeBtn.style.display = 'block';
+                afterBtn.style.display = 'block';
+                closeBtn.style.display = 'block';
+                openBtn.style.display = 'none';
             }
         });
     }
