@@ -260,7 +260,7 @@ body {
 .cat-walking-sprite {
     width: 400px;    /* 스프라이트 이미지의 너비 */
     height: 200px;   /* 스프라이트 이미지 한 프레임의 높이 */
-    background: url("/Todo/assets/cat_tiles.png") 0 0 no-repeat; /* 스프라이트 이미지 경로 및 초기 위치 */
+    background: url("./assets/cat_tiles.png") 0 0 no-repeat; /* 스프라이트 이미지 경로 및 초기 위치 */
     
     animation: walk-animation 2s steps(12) infinite; 
 }

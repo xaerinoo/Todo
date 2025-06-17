@@ -207,13 +207,13 @@ let lastCollectedDate = null;
 // 감정 크리스탈 데이터 초기화
 let crystalBook = {
     emotions: {
-        '차분': {color: '#78C3C9', image: '/Todo/assets/차분.png', collected: 0},
-        '행복': {color: '#FCE7AE', image: '/Todo/assets/행복.png', collected: 0},
-        '열정': {color: '#F9BEB0', image: '/Todo/assets/열정.png', collected: 0},
-        '슬픔': {color: '#79CCEC', image: '/Todo/assets/슬픔.png', collected: 0},
-        '실망': {color: '#868377', image: '/Todo/assets/실망.png', collected: 0},
-        '짜증': {color: '#E8A8B8', image: '/Todo/assets/짜증.png', collected: 0},
-        '분노': {color: '#C09BBC', image: '/Todo/assets/분노.png', collected: 0}
+        '차분': {color: '#78C3C9', image: './assets/차분.png', collected: 0},
+        '행복': {color: '#FCE7AE', image: './assets/행복.png', collected: 0},
+        '열정': {color: '#F9BEB0', image: './assets/열정.png', collected: 0},
+        '슬픔': {color: '#79CCEC', image: './assets/슬픔.png', collected: 0},
+        '실망': {color: '#868377', image: './assets/실망.png', collected: 0},
+        '짜증': {color: '#E8A8B8', image: './assets/짜증.png', collected: 0},
+        '분노': {color: '#C09BBC', image: './assets/분노.png', collected: 0}
     },
     collectedCount: 0,
     collectionOrder: []    // 수집 순서를 저장할 배열
